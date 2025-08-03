@@ -1,0 +1,101 @@
+<%- include('../partials/head') %>
+</head>
+<body class="bg-gray-100">
+  <%- include('../partials/nav') %>
+
+  <main class="flex items-center justify-center min-h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+      <h2 class="text-2xl font-bold text-center mb-6">Create Your Account</h2>
+       <% if (errors && errors.length > 0) { %>
+            <% errors.forEach(msg => { %>
+          <p class="text-red-500"><%= msg %></p>
+        <% }) %>
+       <% } %>
+      <form action="/signup" method="POST" class="space-y-4">
+        <div class="flex gap-4">
+          <div class="w-1/2">
+            <label class="block text-sm font-medium mb-1">First Name</label>
+            <input
+              type="text"
+              name="firstName"
+              value="<%= oldInput.firstName ? oldInput.firstName : '' %>"
+              placeholder="Ram"
+              class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+            />
+          </div>
+          <div class="w-1/2">
+            <label class="block text-sm font-medium mb-1">Last Name</label>
+            <input
+              type="text"
+              name="lastName"
+              placeholder="singh"
+              value="<%= oldInput.secondName ? oldInput.secondName : '' %>"
+              class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Email Address</label>
+          <input
+            type="email"
+            name="email"
+            placeholder="your.email@example.com"
+            value="<%= oldInput.email ? oldInput.email : '' %>"
+            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Password</label>
+          <input
+            type="password"
+            name="password"
+            placeholder="Enter Your Password"
+            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Confirm Password</label>
+          <input
+            type="password"
+            name="confirmPassword"
+            placeholder="Confirm Your Password"
+            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-2">I want to register as:</label>
+          <div class="flex items-center space-x-4">
+            <label class="inline-flex items-center">
+              <input type="radio" name="userType" value="guest" class="form-radio text-red-500" checked />
+              <span class="ml-2">Guest</span>
+            </label>
+            <label class="inline-flex items-center">
+              <input type="radio" name="userType" value="host" class="form-radio text-red-500" />
+              <span class="ml-2">Host</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="flex items-center">
+          <input type="checkbox" name="terms" value="on" class="mr-2" />
+          <label class="text-sm">
+            I agree to the
+            <span class="text-red-500 font-medium cursor-pointer">terms and conditions</span>
+          </label>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full bg-red-500 text-white py-2 rounded-md hover:bg-red-600 transition duration-300"
+        >
+          Register →
+        </button>
+      </form>
+    </div>
+  </main>
+</body>
+</html>
